@@ -39,7 +39,7 @@ case $# in
     exit 1;;
 esac
 
-_ruby=`command rbenv whatis $_ruby`
+_ruby=`command rbenv whatis --installed $_ruby`
 
 if [ $_command = shell ]; then
   echo `rbenv sh-shell $_ruby`
