@@ -41,7 +41,7 @@ Use rbx development version:
 Run these commands:
 
     mkdir -p $RBENV_ROOT/plugins
-    git clone https://github.com/rkh/rbenv-whatis.git $RBENV_ROOT/plugins/rbenv-whatis
-    git clone https://github.com/rkh/rbenv-use.git $RBENV_ROOT/plugins/rbenv-use
+    git clone https://github.com/toy/rbenv-whatis.git $RBENV_ROOT/plugins/whatis
+    git clone https://github.com/toy/rbenv-use.git $RBENV_ROOT/plugins/use
 
-Skip the first `git clone` if you already installed [rbenv-whatis](https://github.com/rkh/rbenv-whatis).
+Skip the first `git clone` if you already installed [rbenv-whatis](https://github.com/toy/rbenv-whatis).
