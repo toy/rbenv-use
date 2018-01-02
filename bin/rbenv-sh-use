@@ -6,9 +6,9 @@
 set -e
 [ -n "$RBENV_DEBUG" ] && set -x
 
-if ! which rbenv-whatis >/dev/null 2>&1; then
+if ! type rbenv-whatis &>/dev/null; then
   echo "rbenv-whatis plugin not installed, please run:" >&2
-  echo -e "\n\tgit clone https://github.com/rkh/rbenv-whatis.git $RBENV_ROOT/plugins/rbenv-whatis\n"  >&2
+  echo -e "\n\tgit clone https://github.com/toy/rbenv-whatis.git $RBENV_ROOT/plugins/whatis\n" >&2
   exit 1
 fi
 
@@ -18,10 +18,9 @@ if [ "$1" = "--complete" ]; then
   exec rbenv-versions --bare
 fi
 
-
 case $# in
   1)
-    if [ $1 = default ]; then
+    if [ "$1" = default ]; then
       _ruby=--unset
     else
       _ruby=$1
@@ -39,10 +38,10 @@ case $# in
     exit 1;;
 esac
 
-_ruby=`command rbenv whatis --installed $_ruby`
+_ruby=$(command rbenv whatis --installed "$_ruby")
 
-if [ $_command = shell ]; then
-  echo `rbenv sh-shell $_ruby`
+if [ "$_command" = shell ]; then
+  rbenv sh-shell "$_ruby"
 else
-  echo "eval `rbenv sh-shell --unset` && command rbenv $_command $_ruby"
+  echo "eval $(rbenv sh-shell --unset) && command rbenv $_command $_ruby"
 fi
